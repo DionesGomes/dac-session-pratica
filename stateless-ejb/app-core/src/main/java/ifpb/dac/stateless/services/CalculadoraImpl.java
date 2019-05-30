@@ -1,4 +1,4 @@
-package ifpb.dac.stateless.services;
+/*package ifpb.dac.stateless.services;
 
 import ifpb.dac.stateless.IFCalculadora;
 import javax.ejb.Remote;
@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 
 /**
  * @author Ricardo Job
- */
+ *
 @Stateless
 @Remote(IFCalculadora.class)
 public class CalculadoraImpl implements IFCalculadora{
@@ -16,4 +16,4 @@ public class CalculadoraImpl implements IFCalculadora{
         return a+b;
     }
 
-}
+}*/

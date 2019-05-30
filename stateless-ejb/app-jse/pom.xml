@@ -9,10 +9,10 @@
     </parent>
     
     <groupId>ifpb.dac.stateless</groupId>
-    <artifactId>stateless-ejb-jse</artifactId>
+    <artifactId>sessionbeans-ejb-jse</artifactId>
     <version>1.0-SNAPSHOT</version>
   
-    <name>stateless-ejb-jse</name>
+    <name>sessionbeans-ejb-jse</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

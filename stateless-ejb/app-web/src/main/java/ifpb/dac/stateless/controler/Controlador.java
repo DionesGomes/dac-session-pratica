@@ -1,6 +1,6 @@
 package ifpb.dac.stateless.controler;
 
-import ifpb.dac.stateless.IFCalculadora;
+//import ifpb.dac.stateless.IFCalculadora;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.inject.Inject;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/controlador"})
 public class Controlador extends HttpServlet {
 
-    @Inject
-    private IFCalculadora calculadora;
+    //@Inject
+    //private IFCalculadora calculadora;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class Controlador extends HttpServlet {
             int a = Integer.parseInt(request.getParameter("a"));
             int b = Integer.parseInt(request.getParameter("b"));
 
-            int soma = calculadora.somar(a, b);
+            //int soma = calculadora.somar(a, b);
 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -37,7 +37,7 @@ public class Controlador extends HttpServlet {
             out.println("<title>--Calculadora---</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Soma: " + soma + "</h1>");
+            //out.println("<h1>Soma: " + soma + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

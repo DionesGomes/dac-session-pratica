@@ -9,22 +9,22 @@
     </parent>
     
     <groupId>ifpb.dac.stateless</groupId>
-    <artifactId>stateless-ejb-core</artifactId>
+    <artifactId>sessionbeans-ejb-core</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>stateless-ejb-core</name>
+    <name>sessionbeans-ejb-core</name>
     
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
-    <dependencies> 
+    <dependencies>
         <dependency>
-            <groupId>ifpb.dac.stateless</groupId>
-            <artifactId>stateless-ejb-shared</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency> 
+            <groupId>${project.groupId}</groupId>
+            <artifactId>sessionbeans-ejb-shared</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
