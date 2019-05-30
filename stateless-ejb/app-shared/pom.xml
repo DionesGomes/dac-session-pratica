@@ -9,9 +9,15 @@
     </parent>
     
     <groupId>ifpb.dac.stateless</groupId>
-    <artifactId>stateless-ejb-shared</artifactId>
+    <artifactId>sessionbeans-ejb-shared</artifactId>
     <version>1.0-SNAPSHOT</version>
   
-    <name>stateless-ejb-shared</name>
+    <name>sessionbeans-ejb-shared</name>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
      
 </project>

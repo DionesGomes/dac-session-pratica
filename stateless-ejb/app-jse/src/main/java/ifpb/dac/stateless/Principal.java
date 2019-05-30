@@ -1,6 +1,6 @@
 package ifpb.dac.stateless;
 
-import ifpb.dac.stateless.IFCalculadora;
+
 import javax.swing.JOptionPane;
 /**
  *
@@ -70,15 +70,7 @@ public class Principal extends javax.swing.JFrame {
         String nome = "java:global/stateless-ejb-core/CalculadoraImpl";
         
         
-        IFCalculadora calculadora = new ServiceLocator().
-                lookup(nome, IFCalculadora.class);
-
-        int a = Integer.parseInt(jTextField1.getText());
-        int b = Integer.parseInt(jTextField2.getText());
-
-        int soma = calculadora.somar(a, b);
-
-        JOptionPane.showMessageDialog(this, soma);
+        
 
 
     }//GEN-LAST:event_jButton1ActionPerformed

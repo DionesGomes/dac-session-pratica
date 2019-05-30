@@ -20,14 +20,14 @@
      
     <dependencies>
         <dependency>
-            <groupId>ifpb.dac.stateless</groupId>
-            <artifactId>stateless-ejb-shared</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish.extras</groupId>
             <artifactId>glassfish-embedded-all</artifactId>
             <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>sessionbeans-ejb-shared</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
    
