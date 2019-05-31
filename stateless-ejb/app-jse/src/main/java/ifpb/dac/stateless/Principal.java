@@ -4,8 +4,8 @@ package ifpb.dac.stateless;
 import ifpb.dac.domain.Cliente;
 import ifpb.dac.domain.ClienteInterface;
 import ifpb.dac.locator.ServiceLocator;
+import java.util.List;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -43,13 +43,17 @@ public class Principal extends javax.swing.JFrame {
                                 boolean menuclb = true;
                                 while(menuclb == true){
                                     ler.nextLine();
-                                    System.out.println("Para buscar os clientes digite 1: \n" + 
+                                    System.out.println("Para buscar um cliente digite 1: \n" + 
+                                            "Para listar os clientes digite 2: \n" +
                                             "Para sair digite " + Opcoes.SAIR.getId() + ":");
                                     Opcoes quantclb = Opcoes.fromId(ler.nextInt());
                                     switch(quantclb){
                                         case BUSCARCLIENTE:
                                             ler.nextLine();
                                             buscarCliente(recursocliente);
+                                            break;
+                                        case LISTARCLIENTE:
+                                            listarClientes(recursocliente);
                                             break;
                                         case SAIR:
                                             menuclb = false;
@@ -81,8 +85,19 @@ public class Principal extends javax.swing.JFrame {
         
     }
     
-    public static void cadastrarClientes(String recurso){
+    public static void listarClientes(String recurso){
         
+        ClienteInterface clientedao = new ServiceLocator().lookup(recurso, ClienteInterface.class);
+        List<Cliente> clientes = clientedao.todosOsClientes();
+        
+        for(Cliente cliente : clientes){
+            System.out.println("Nome: " + cliente.getNome());
+            System.out.println("CPF: " + cliente.getCpf());
+            System.out.println(" --- ");
+        }
+    }
+    
+    public static void cadastrarClientes(String recurso){
         
         ClienteInterface clientedao = new ServiceLocator().lookup(recurso, ClienteInterface.class);
         clientedao.adicionar(cadCliente());
@@ -108,7 +123,7 @@ public class Principal extends javax.swing.JFrame {
     public static void buscarCliente(String recurso){
         
         Scanner ler = new Scanner(System.in);
-        System.out.println("Insira o cpf para buscar: ");
+        System.out.println("Insira o cpf para buscar e: ");
         String cpf = ler.nextLine();
         ClienteInterface clientedao = new ServiceLocator().lookup(recurso, ClienteInterface.class);
         Cliente cliente = clientedao.buscarCpf(cpf);
@@ -148,6 +163,7 @@ enum Opcoes{
     CADCLIENTES(1),
     LISTBUSCCLIETES(2),
     BUSCARCLIENTE(1),
+    LISTARCLIENTE(2),
     EDITARCLIENTE(1),
     EXCLUIRCLIENTE(2),
     SAIR(0);
