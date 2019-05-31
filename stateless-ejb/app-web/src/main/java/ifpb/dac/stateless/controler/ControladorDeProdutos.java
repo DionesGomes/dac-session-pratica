@@ -31,14 +31,20 @@ public class ControladorDeProdutos implements Serializable {
     }
     
     public String remover(Produto produto) {
-    	this.produtoDAO.remover(produto);
+    	this.produto = produto;
+    	this.produtoDAO.remover(this.produto);
     	return null;
     }   
     
-    public List<Produto> getProdutosBuscados(){
+    public String editar(Produto produto) {
+    	this.produto = produto;
+    	this.produtoDAO.atualizar(this.produto);
     	return null;
     }
     
+    public List<Produto> getProdutosBuscados(){
+    	return produtoDAO.buscarPelaDescricao(descricaoProduto);
+    }
 
 	public Produto getProduto() {
 		return produto;
