@@ -17,11 +17,11 @@ public class ControladorDeClientes implements Serializable{
 	private Cliente cliente;
 	
 	@EJB
-	private ClienteInterface clientesEmJDBC;
+	private ClienteInterface clienteDAO;
 	
 	
 	public List<Cliente> getTodosOsClientes(){
-		return clientesEmJDBC.todososclientes();
+		return clienteDAO.todosOsClientes();
 	}
 
 	public String adicionar(){
@@ -29,7 +29,12 @@ public class ControladorDeClientes implements Serializable{
 		return null;
 	}
 	public String remover(Cliente cliente){
-		this.clientesEmJDBC.remover(cliente);
+		this.clienteDAO.remover(cliente);
+		return null;
+	}
+
+	public String atualizar(Cliente cliente){
+		this.clienteDAO.atualizar(cliente);
 		return null;
 	}
 

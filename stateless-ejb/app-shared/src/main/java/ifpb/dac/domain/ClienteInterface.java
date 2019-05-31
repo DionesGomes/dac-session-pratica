@@ -10,8 +10,8 @@ public interface ClienteInterface {
     
     void atualizar(Cliente cliente);
     
-    List<Cliente> todososclientes();
+    List<Cliente> todosOsClientes();
     
-    Cliente buscarcpf(String cpf);
+    Cliente buscarCpf(String cpf);
     
 }

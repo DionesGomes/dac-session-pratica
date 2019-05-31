@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface Carrinho {
 
-    void adicionar(String produto);
+    void adicionar(Produto produto);
 
-    List<String> produtos();
+    List<Produto> produtos();
 
-    void remover(String produto);
+    void remover(Produto produto);
     
     void finalizar();
     

@@ -15,16 +15,16 @@
                         <div class="input-field">
                             <h:outputLabel for="cpf">CPF:</h:outputLabel>
                             <h:inputText id="cpf"
-                                         value="" />
+                                         value="#{controladorDeClientes.cliente.cpf}" />
                         </div>
                         <div class="input-field">
                             <h:outputLabel for="nome">Nome:</h:outputLabel>
                             <h:inputText id="nome"
-                                         value="" />
+                                         value="#{controladorDeClientes.cliente.nome}" />
                         </div>
 
 
-                        <h:commandButton value="Cadastrar" action="#"
+                        <h:commandButton value="Cadastrar" action="#{controladorDeClientes.adicionar}"
                                          class="btn waves-effect waves-teal right" />
                         <h:commandButton value="Atualizar" action="#"
                                          class="btn waves-effect waves-teal right" />

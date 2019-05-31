@@ -8,41 +8,58 @@
 
 <ui:composition template="../template.xhtml">
     <ui:define name="centro">
-        <h3 class="blue-text">Lista de Clientes</h3>
+        <h3 class="blue-text">Lista de clientes</h3>
+        <h4 class="blue-text">Busca de cliente por CPF</h4>
+        <h:form>
+            <div class="row">
+                <div class="col l12">
+                    <h:form>
+                        <h:messages layout="table" class="red-text"></h:messages>
+                        <div class="input-field">
+                            <h:inputText value="" required="true" />
+                        </div>
+
+                        <h:commandButton value="Buscar" action="#"
+                                         class="btn waves-effect waves-teal right" />
+
+                    </h:form>
+                </div>
+            </div>
+        </h:form>
         <a href="edit.xhtml">Adicionar/Editar</a>
         <h:form prependId="false">
             <ul class="collection with-header">
                 <li class="collection-item">
                     <div class="row">
-                        <div class="col l4">
+                        <div class="col l3">
                             <b>ID</b>
                         </div>
-                        <div class="col l3">
+                        <div class="col l3">    
                             <b>CPF</b>
                         </div>
                         <div class="col l3">
                             <b>Nome</b>
                         </div>
-                        <div class="col"></div>
-                        <div class="col"></div>
+                        <div class="col l3"></div>
+                        <div class="col l3"></div>
                     </div>
                 </li>
-                <ui:repeat var="banda" value="">
+                <ui:repeat var="cliente" value="">
                     <li class="collection-item">
                         <div class="row">
-                            <div class="col l4">
-                                <h:outputText value=""></h:outputText>
-                            </div>
                             <div class="col l3">
                                 <h:outputText value=""></h:outputText>
                             </div>
                             <div class="col l3">
                                 <h:outputText value=""></h:outputText>
                             </div>
-                            <div class="col">
-                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
+                            <div class="col l3">
+                                <h:outputText value=""></h:outputText>
                             </div>
-                            <div class="col">
+                            <div class="col l3">
+                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#{controladorDeClientes.remover()}"/>
+                            </div>
+                            <div class="col l3">
                                 <h:commandButton class="btn waves-effect waves-teal" value="editar" action="#"/>
                             </div>
                         </div>

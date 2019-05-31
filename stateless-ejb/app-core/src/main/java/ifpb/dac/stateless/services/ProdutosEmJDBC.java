@@ -79,30 +79,11 @@ public class ProdutosEmJDBC implements ProdutoInterface{
 		}		
     }
 
-    @Override
-    public List<Produto> todososclientes() {
-        
-         try {
-	            List<Produto> lista = new ArrayList<>();
-	            String query = " SELECT * "
-	            		+ " FROM produto "
-	            		+ " ORDER BY nome ";
-	            PreparedStatement stm = connection.prepareStatement(query); 
-	            ResultSet rs = stm.executeQuery();
-	            while (rs.next()) {
-	                lista.add(
-	                    criarProduto(rs)
-	                );
-	            }
-	            return lista;
-	        } catch (SQLException ex) {
-	            return Collections.EMPTY_LIST;
-	        }
-    }
+   
 
     @Override
-    public Produto buscardescricao(String descricao) {
-        
+    public List<Produto> buscarPelaDescricao(String descricao) {
+        List<Produto> produtos = new ArrayList<Produto>();
         try {
 			String query = "SELECT * "
 					+ " FROM produto "
@@ -110,14 +91,13 @@ public class ProdutosEmJDBC implements ProdutoInterface{
 			PreparedStatement stm = connection.prepareStatement(query);
 			stm.setString(1, descricao);
 			ResultSet rs = stm.executeQuery();
-			if(rs.next())
-				return criarProduto(rs);
+			while (rs.next())
+				produtos.add(criarProduto(rs));
 		}catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		return null;
-        }
-    
+		return produtos;
+        }   
     
     private Produto criarProduto(ResultSet result) throws SQLException {
         Integer codigo = result.getInt("codigo");
@@ -143,5 +123,25 @@ public class ProdutosEmJDBC implements ProdutoInterface{
         } catch (SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
         }
+    }
+
+    @Override
+    public List<Produto> todosOsProduto() {        
+        try {
+	        List<Produto> lista = new ArrayList<>();
+	        String query = " SELECT * "
+	            		+ " FROM produto "
+	            		+ " ORDER BY nome ";
+	         PreparedStatement stm = connection.prepareStatement(query); 
+	         ResultSet rs = stm.executeQuery();
+	            while (rs.next()) {
+	                lista.add(
+	                    criarProduto(rs)
+	                );
+	            }
+	            return lista;
+	    } catch (SQLException ex) {
+	      return Collections.EMPTY_LIST;
+         }
     }
 }
