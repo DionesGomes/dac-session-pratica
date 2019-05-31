@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+<ui:composition template="../template.xhtml">
+    <ui:define name="centro">
+        <h3 class="blue-text">Busca de produto por descrição</h3>
+        <h:form>
+            <div class="row">
+                <div class="col s12 l4 offset-l4">
+                    <h:form>
+                        <h:messages layout="table" class="red-text"></h:messages>
+                        <div class="input-field">
+                            <h:inputText value="" required="true" />
+                        </div>
+
+                        <h:commandButton value="Buscar" action="#"
+                                         class="btn waves-effect waves-teal right" />
+
+                    </h:form>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

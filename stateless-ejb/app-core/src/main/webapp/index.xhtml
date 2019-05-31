@@ -19,9 +19,19 @@
             <h:dataTable var="cliente" value="#{controleDeClientes.todosOsClientes}"
                          class="striped highlight">
                 <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputLabel                     	
+                    	value="#{cliente.id}"/>
+                </h:column>
+                <h:column>
                     <f:facet name="header">Nome</f:facet>
                     <h:outputLabel                     	
-                    	value="#{client.nome}"/>
+                    	value="#{cliente.nome}"/>
+                </h:column>
+                 <h:column>
+                    <f:facet name="header">CPF</f:facet>
+                    <h:outputLabel                     	
+                    	value="#{cliente.cpf}"/>
                 </h:column>
             </h:dataTable>
         </h:form>
