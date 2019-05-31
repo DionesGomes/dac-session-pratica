@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sessionbeans-ejb-core:war">
+    <output-path>$PROJECT_DIR$/app-core/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>sessionbeans-ejb-core</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="sessionbeans-ejb-core.war">
+      <element id="artifact" artifact-name="sessionbeans-ejb-core:war exploded" />
+    </root>
+  </artifact>
+</component>
