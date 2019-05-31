@@ -1,5 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package ifpb.dac.stateless.services;
 
+import ifpb.dac.domain.Cliente;
+import ifpb.dac.domain.Produto;
+import ifpb.dac.domain.ProdutoInterface;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,22 +19,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.sql.DataSource;
 
-import ifpb.dac.domain.Cliente;
-import ifpb.dac.domain.ClienteInterface;
-
+/**
+ *
+ * @author diones
+ */
 
 @Stateless
-@Remote(value = ClienteInterface.class)
-public class ClientesEmJDBC implements ClienteInterface{
-	
-	@Resource(name = "java:app/jdbc/clientes")
+@Remote(value = ProdutoInterface.class)
+public class ProdutosEmJDBC implements ProdutoInterface{
+    
+    @Resource(name = "java:app/jdbc/clientes")
     private DataSource dataSource;
     private Connection connection;
 	
@@ -35,94 +46,18 @@ public class ClientesEmJDBC implements ClienteInterface{
         } catch (SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
         }
-	}
-
-	@Override
-	public void adicionar(Cliente cliente) {
-		try {
-			String query = "INSERT INTO"
-					+ "  cliente (cpf, nome)"
-					+ "  VALUES(?,?)"
-					+ " RETURNING id; "; 
-            PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1,cliente.getCpf());
-            stm.setString(2,cliente.getNome());
-            ResultSet rs = stm.executeQuery();
-            if (rs.next())
-            	cliente.setId(rs.getInt("id"));
-        } catch (SQLException ex) {
-            Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
-        }
-	}
-
-	@Override
-	public void remover(Cliente cliente) {
-		try {
-			String query = " DELETE FROM cliente "
-					+ " WHERE id = ?";
-			PreparedStatement stm = connection.prepareStatement(query);
-			stm.setInt(1, cliente.getId());
-			stm.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-	}
-
-	@Override
-	public List<Cliente> todososclientes() {
-		 try {
-	            List<Cliente> lista = new ArrayList<>();
-	            String query = " SELECT * "
-	            		+ " FROM cliente "
-	            		+ " ORDER BY nome ";
-	            PreparedStatement stm = connection.prepareStatement(query); 
-	            ResultSet rs = stm.executeQuery();
-	            while (rs.next()) {
-	                lista.add(
-	                    criarCliente(rs)
-	                );
-	            }
-	            return lista;
-	        } catch (SQLException ex) {
-	            return Collections.EMPTY_LIST;
-	        }
-	}
-
-	@Override
-	public Cliente buscarcpf(String cpf) {
-		try {
-			String query = "SELECT * "
-					+ " FROM cliente "
-					+ " WHERE cpf = ? ";
-			PreparedStatement stm = connection.prepareStatement(query);
-			stm.setString(1, cpf);
-			ResultSet rs = stm.executeQuery();
-			if(rs.next())
-				return criarCliente(rs);
-		}catch (SQLException ex) {
-			ex.printStackTrace();
-		}
-		return null;
-	}
-	
-	private Cliente criarCliente(ResultSet result) throws SQLException {
-        String nome = result.getString("nome");
-        String cpf = result.getString("cpf");
-        int id = result.getInt("id");
-        return new Cliente(id,cpf,nome);
     }
 
     @Override
-    public void atualizar(Cliente cliente) {
+    public void adicionar(Produto produto) {
         
-         try {         
-                String query = "UPDATE cliente SET nome = ?, cpf = ? "
-                                + "WHERE id = ? ";
-					
+        try {
+			String query = "INSERT INTO " 
+					+ "  produtos (descricao, valor) "
+					+ "  VALUES(?,?) "; 
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1,cliente.getNome());
-            stm.setString(2, cliente.getCpf());
-            stm.setInt(3, cliente.getId());
+            stm.setString(1,produto.getDescricao());
+            stm.setBigDecimal(2,produto.getValor());
             ResultSet rs = stm.executeQuery();
             
         } catch (SQLException ex) {
@@ -130,4 +65,83 @@ public class ClientesEmJDBC implements ClienteInterface{
         }
     }
 
+    @Override
+    public void remover(Produto produto) {
+        
+        try {
+			String query = " DELETE FROM produto "
+					+ " WHERE id = ?";
+			PreparedStatement stm = connection.prepareStatement(query);
+			stm.setInt(1, produto.getCodigo());
+			stm.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+    }
+
+    @Override
+    public List<Produto> todososclientes() {
+        
+         try {
+	            List<Produto> lista = new ArrayList<>();
+	            String query = " SELECT * "
+	            		+ " FROM produto "
+	            		+ " ORDER BY nome ";
+	            PreparedStatement stm = connection.prepareStatement(query); 
+	            ResultSet rs = stm.executeQuery();
+	            while (rs.next()) {
+	                lista.add(
+	                    criarProduto(rs)
+	                );
+	            }
+	            return lista;
+	        } catch (SQLException ex) {
+	            return Collections.EMPTY_LIST;
+	        }
+    }
+
+    @Override
+    public Produto buscardescricao(String descricao) {
+        
+        try {
+			String query = "SELECT * "
+					+ " FROM produto "
+					+ " WHERE descricao = ? ";
+			PreparedStatement stm = connection.prepareStatement(query);
+			stm.setString(1, descricao);
+			ResultSet rs = stm.executeQuery();
+			if(rs.next())
+				return criarProduto(rs);
+		}catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return null;
+        }
+    
+    
+    private Produto criarProduto(ResultSet result) throws SQLException {
+        Integer codigo = result.getInt("codigo");
+        String descricao = result.getString("descricao");
+        BigDecimal valor = result.getBigDecimal("valor");
+        return new Produto(codigo,descricao,valor);
+    
+    }
+
+    @Override
+    public void atualizar(Produto produto) {       
+        
+        try {         
+                String query = "UPDATE produto SET descricao = ?, valor = ? "
+                                + "WHERE codigo = ?";
+					
+            PreparedStatement stm = connection.prepareStatement(query);
+            stm.setString(1,produto.getDescricao());
+            stm.setBigDecimal(2,produto.getValor());
+            stm.setInt(3, produto.getCodigo());
+            ResultSet rs = stm.executeQuery();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
+        }
+    }
 }
