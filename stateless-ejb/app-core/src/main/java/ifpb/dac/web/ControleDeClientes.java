@@ -8,7 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import ifpb.dac.domain.Cliente;
-import ifpb.dac.stateless.services.ClientesEmJDBC;
+import ifpb.dac.domain.ClienteInterface;
 
 
 @SessionScoped
@@ -16,7 +16,7 @@ import ifpb.dac.stateless.services.ClientesEmJDBC;
 public class ControleDeClientes implements Serializable{
 	
 	@EJB
-	private ClientesEmJDBC clientesEmJDBC;
+	private ClienteInterface clientesEmJDBC;
 	
 	
 	public List<Cliente> getTodosOsClientes(){
