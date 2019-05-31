@@ -21,7 +21,7 @@ public class ControladorDeClientes implements Serializable{
 	
 	
 	public List<Cliente> getTodosOsClientes(){
-		return clienteDAO.todososclientes();
+		return clienteDAO.todosOsClientes();
 	}
 
 	public String adicionar(){

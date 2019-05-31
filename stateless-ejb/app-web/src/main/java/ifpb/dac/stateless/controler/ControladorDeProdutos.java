@@ -4,6 +4,7 @@ package ifpb.dac.stateless.controler;
 import ifpb.dac.domain.Produto;
 import ifpb.dac.domain.ProdutoInterface;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ public class ControladorDeProdutos implements Serializable {
     private ProdutoInterface produtoDAO;
     
     public List<Produto> getTodosOsProdutos(){
-    	return produtoDAO.todososproduto();
+    	return produtoDAO.todosOsProduto();
     }
     
     public String adicionar() {
@@ -35,7 +36,7 @@ public class ControladorDeProdutos implements Serializable {
     }   
     
     public List<Produto> getProdutosBuscados(){
-    	return this.produtosDAO.
+    	return null;
     }
     
 

@@ -82,8 +82,8 @@ public class ProdutosEmJDBC implements ProdutoInterface{
    
 
     @Override
-    public Produto buscarDescricao(String descricao) {
-        
+    public List<Produto> buscarPelaDescricao(String descricao) {
+        List<Produto> produtos = new ArrayList<Produto>();
         try {
 			String query = "SELECT * "
 					+ " FROM produto "
@@ -91,12 +91,12 @@ public class ProdutosEmJDBC implements ProdutoInterface{
 			PreparedStatement stm = connection.prepareStatement(query);
 			stm.setString(1, descricao);
 			ResultSet rs = stm.executeQuery();
-			if(rs.next())
-				return criarProduto(rs);
+			while (rs.next())
+				produtos.add(criarProduto(rs));
 		}catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		return null;
+		return produtos;
         }   
     
     private Produto criarProduto(ResultSet result) throws SQLException {

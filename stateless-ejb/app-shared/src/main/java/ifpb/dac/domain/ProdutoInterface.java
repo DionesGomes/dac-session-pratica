@@ -13,5 +13,5 @@ public interface ProdutoInterface {
     
     List<Produto> todosOsProduto();
     
-    Produto buscarDescricao(String descricao);
+    List<Produto> buscarPelaDescricao(String descricao);
 }
