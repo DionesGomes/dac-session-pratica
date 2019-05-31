@@ -1,6 +1,7 @@
 package ifpb.dac.web;
 
 import ifpb.dac.domain.Carrinho;
+import ifpb.dac.domain.Produto;
 
 import javax.ejb.Remote;
 import javax.ejb.Remove;
@@ -16,21 +17,21 @@ import java.util.concurrent.TimeUnit;
 @StatefulTimeout(unit = TimeUnit.SECONDS,value = 60)
 public class CarrinhoDeCompras implements Carrinho{
 
-    private List<String> produtos = new ArrayList<>();
+    private List<Produto> produtos = new ArrayList<>();
 
 
     @Override
-    public void adicionar(String produto) {
+    public void adicionar(Produto produto) {
         this.produtos.add(produto);
     }
 
     @Override
-    public List<String> produtos(){
+    public List<Produto> produtos(){
         return Collections.unmodifiableList(produtos);
     }
 
     @Override
-    public void remover(String produto) {
+    public void remover(Produto produto) {
             this.produtos.remove(produto);
     }
 

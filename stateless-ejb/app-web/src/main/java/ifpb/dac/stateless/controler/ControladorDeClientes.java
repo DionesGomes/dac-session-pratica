@@ -21,7 +21,7 @@ public class ControladorDeClientes implements Serializable{
 	
 	
 	public List<Cliente> getTodosOsClientes(){
-		return clienteDAO.todososclientes();
+		return clienteDAO.todosOsClientes();
 	}
 
 	public String adicionar(){
@@ -30,6 +30,11 @@ public class ControladorDeClientes implements Serializable{
 	}
 	public String remover(Cliente cliente){
 		this.clienteDAO.remover(cliente);
+		return null;
+	}
+
+	public String atualizar(Cliente cliente){
+		this.clienteDAO.atualizar(cliente);
 		return null;
 	}
 
