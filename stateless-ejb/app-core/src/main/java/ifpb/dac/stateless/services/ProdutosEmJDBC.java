@@ -87,9 +87,9 @@ public class ProdutosEmJDBC implements ProdutoInterface{
         try {
 			String query = "SELECT * "
 					+ " FROM produto "
-					+ " WHERE descricao = ? ";
+					+ " WHERE descricao ILIKE ? ";
 			PreparedStatement stm = connection.prepareStatement(query);
-			stm.setString(1, descricao);
+			stm.setString(1, "%"+descricao+"%");
 			ResultSet rs = stm.executeQuery();
 			while (rs.next())
 				produtos.add(criarProduto(rs));
@@ -100,7 +100,7 @@ public class ProdutosEmJDBC implements ProdutoInterface{
         }   
     
     private Produto criarProduto(ResultSet result) throws SQLException {
-        Integer codigo = result.getInt("codigo");
+        Integer codigo = result.getInt("id");
         String descricao = result.getString("descricao");
         BigDecimal valor = result.getBigDecimal("valor");
         return new Produto(codigo,descricao,valor);
@@ -112,7 +112,7 @@ public class ProdutosEmJDBC implements ProdutoInterface{
         
         try {         
                 String query = "UPDATE produto SET descricao = ?, valor = ? "
-                                + "WHERE codigo = ?";
+                                + "WHERE id = ?";
 					
             PreparedStatement stm = connection.prepareStatement(query);
             stm.setString(1,produto.getDescricao());
