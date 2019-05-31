@@ -17,4 +17,5 @@ nb-configuration.xml
 # IDEA
 **/target
 .idea/**
+**/.idea/**
 **/*.iml

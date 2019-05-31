@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app-core/sessionbeans-ejb-core.iml" filepath="$PROJECT_DIR$/app-core/sessionbeans-ejb-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-jse/sessionbeans-ejb-jse.iml" filepath="$PROJECT_DIR$/app-jse/sessionbeans-ejb-jse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-shared/sessionbeans-ejb-shared.iml" filepath="$PROJECT_DIR$/app-shared/sessionbeans-ejb-shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app-web/sessionbeans-ejb-web.iml" filepath="$PROJECT_DIR$/app-web/sessionbeans-ejb-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stateless-ejb.iml" filepath="$PROJECT_DIR$/stateless-ejb.iml" />
+    </modules>
+  </component>
+</project>
