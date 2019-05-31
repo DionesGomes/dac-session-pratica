@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,15 +39,16 @@ public class VendaEmJDBC implements VendaInterface {
     public void adicionar(Venda venda) {
         try {
             String query = "INSERT INTO"
-                    + "  venda (cpf, nome)"
+                    + "  venda (idcliente, total)"
                     + "  VALUES(?,?)"
                     + " RETURNING id; ";
             PreparedStatement stm = connection.prepareStatement(query);
-            stm.setString(1,cliente.getCpf());
-            stm.setString(2,cliente.getNome());
+            stm.setInt(1,venda.getIdcliente());
+            stm.setDouble(2,venda.getTotal());
             ResultSet rs = stm.executeQuery();
             if (rs.next())
-                cliente.setId(rs.getInt("id"));
+                venda.setId(rs.getInt("id"));
+            // Manipular a tabela itemVenda
         } catch (SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
         }
@@ -53,16 +56,56 @@ public class VendaEmJDBC implements VendaInterface {
 
     @Override
     public void remover(Venda venda) {
-
+        try {
+            String query = " DELETE FROM venda "
+                    + " WHERE id = ?";
+            PreparedStatement stm = connection.prepareStatement(query);
+            stm.setInt(1, venda.getId());
+            stm.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<Venda> listar() {
-        return null;
+        try {
+            List<Venda> lista = new ArrayList<>();
+            String query = " SELECT * "
+                    + " FROM venda "
+                    + " ORDER BY id ";
+            PreparedStatement stm = connection.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                lista.add(criarVenda(rs));
+            }
+            return lista;
+        } catch (SQLException ex) {
+            return Collections.EMPTY_LIST;
+        }
     }
 
     @Override
     public Venda buscar(int id) {
+        try {
+            String query = "SELECT * "
+                    + " FROM venda "
+                    + " WHERE id = ? ";
+            PreparedStatement stm = connection.prepareStatement(query);
+            stm.setInt(1, id);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())
+                return criarVenda(rs);
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return null;
+    }
+
+    private Venda criarVenda(ResultSet result) throws SQLException {
+        int id = result.getInt("id");
+        int idcliente = result.getInt("id_cliente");
+        double total = result.getDouble("total");
+        return new Venda(id,idcliente,total);
     }
 }
