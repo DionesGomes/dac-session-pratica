@@ -69,7 +69,7 @@ public class ClientesEmJDBC implements ClienteInterface{
 	}
 
 	@Override
-	public List<Cliente> todososclientes() {
+	public List<Cliente> todosOsClientes() {
 		 try {
 	            List<Cliente> lista = new ArrayList<>();
 	            String query = " SELECT * "
@@ -89,7 +89,7 @@ public class ClientesEmJDBC implements ClienteInterface{
 	}
 
 	@Override
-	public Cliente buscarcpf(String cpf) {
+	public Cliente buscarCpf(String cpf) {
 		try {
 			String query = "SELECT * "
 					+ " FROM cliente "
