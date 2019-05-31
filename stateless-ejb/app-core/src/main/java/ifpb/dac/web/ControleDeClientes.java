@@ -23,7 +23,7 @@ public class ControleDeClientes implements Serializable{
 	
 	
 	public List<Cliente> getTodosOsClientes(){
-		return clientesEmJDBC.todososclientes();
+		return clientesEmJDBC.todosOsClientes();
 	}
 
 	public String adicionar(){
