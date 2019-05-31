@@ -35,7 +35,7 @@ public class ControladorDeClientes implements Serializable{
 
 	public String atualizar(Cliente cliente){
 		this.clienteDAO.atualizar(cliente);
-		return null;
+		return "cliente/list.xhtml";
 	}
 	public String buscarCpf(String cpf){
 		this.clienteDAO.buscarCpf(cpf);
