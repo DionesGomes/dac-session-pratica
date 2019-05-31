@@ -47,7 +47,7 @@ public class Principal extends javax.swing.JFrame {
                                 while(menuclb == true){
                                     ler.nextLine();
                                     System.out.println("Para buscar um cliente digite "+ Opcoes.BUSCARCLIENTE.getId() +": \n" + 
-                                            "Para listar os clientes digite 2: \n" +
+                                            "Para listar os clientes digite "+ Opcoes.LISTARCLIENTE.getId() +": \n" +
                                             "Para sair digite " + Opcoes.SAIR.getId() + ":");
                                     Opcoes quantclb = Opcoes.fromId(ler.nextInt());
                                     switch(quantclb){
@@ -134,8 +134,8 @@ public class Principal extends javax.swing.JFrame {
         boolean menu = true;
         while(menu == true){
             ler.nextLine();
-            System.out.println("Para editar cliente digite 1: \n" + 
-                                "Para excluir cliente digite 2: \n"
+            System.out.println("Para editar cliente digite "+ Opcoes.EDITARCLIENTE.getId() +": \n" + 
+                                "Para excluir cliente digite "+ Opcoes.EXCLUIRCLIENTE.getId() +": \n"
                               + "Para sair digite " + Opcoes.SAIR.getId() + ":");
             Opcoes quant = Opcoes.fromId(ler.nextInt());
             switch(quant){
