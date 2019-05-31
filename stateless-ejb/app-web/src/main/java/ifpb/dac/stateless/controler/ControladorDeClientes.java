@@ -1,20 +1,18 @@
-package ifpb.dac.web;
-
-import java.io.Serializable;
-import java.util.List;
-
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
+package ifpb.dac.stateless.controler;
 
 import ifpb.dac.domain.Cliente;
 import ifpb.dac.domain.ClienteInterface;
 
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+import java.io.Serializable;
+import java.util.List;
+
 
 @RequestScoped
 @Named
-public class ControleDeClientes implements Serializable{
+public class ControladorDeClientes implements Serializable{
 
 	private Cliente cliente;
 	
