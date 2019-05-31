@@ -20,7 +20,7 @@
                         </div>
 
 
-                        <h:commandButton value="Buscar" action="#"
+                        <h:commandButton value="Buscar" action="#{controladorDeProdutos.produtosBuscados}"
                                          class="btn waves-effect waves-teal right" />
                         
                         <br></br>
@@ -48,11 +48,11 @@
                                     </div>
                                 </div>
                             </li>
-                            <ui:repeat var="banda" value="">
+                            <ui:repeat var="produto" value="#{controladorDeProdutos.produtosBuscados}">
                                 <li class="collection-item">
                                     <div class="row">
                                         <div class="col l2">
-                                            <h:outputText value=""></h:outputText>
+                                            <h:outputText value="#{produto.codigo}"></h:outputText>
                                         </div>
                                         <div class="col l3">
                                             <h:outputText value=""></h:outputText>
