@@ -24,68 +24,68 @@
     </h:head>
     <body>
 
-    <!-- Dropdown Structure -->
-    <ul id="produtos" class="dropdown-content">
-        <li><a href="Produto/list.xhtml">Lista e Busca</a></li>
-        <li><a href="Produto/edit.xhtml">Cadastro</a></li>
-    </ul>
-    <ul id="clientes" class="dropdown-content">
-        <li><a href="cliente/list.xhtml">Lista e Busca</a></li>
-        <li><a href="cliente/edit.xhtml">Cadastro</a></li>
-    </ul>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="Produto/list.xhtml" class="brand-logo">Loja DAC</a>
-            <ul class="right hide-on-med-and-down">
+        <!-- Dropdown Structure -->
+        <ul id="produtos" class="dropdown-content">
+            <li><a href="Produto/list.xhtml">Lista e Busca</a></li>
+            <li><a href="Produto/edit.xhtml">Cadastro</a></li>
+        </ul>
+        <ul id="clientes" class="dropdown-content">
+            <li><a href="cliente/list.xhtml">Lista e Busca</a></li>
+            <li><a href="cliente/edit.xhtml">Cadastro</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="Produto/list.xhtml" class="brand-logo">Loja DAC</a>
+                <ul class="right hide-on-med-and-down">
 
-                <!-- Dropdown Trigger -->
-                <li><a class="dropdown-trigger" href="#!" data-target="produtos">Produtos<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger" href="#!" data-target="clientes">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="produtos">Produtos<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="clientes">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
 
-            </ul>
-        </div>
-    </nav>
+                </ul>
+            </div>
+        </nav>
 
 
         <div class="container">
             <div class="section red-text">
                 <ui:insert name="centro">
-          
+
                 </ui:insert>
             </div>
         </div>
 
         <ui:insert name="resto">
 
+
+            <!--            <div class="container">
+                            <div class="section">
             
-<!--            <div class="container">
-                <div class="section">
-
-                    <div class="row">
-                        <div class="col s12 center">
-                            <h3><i class="mdi-content-send brown-text"></i></h3>
-                            <h4>Contact Us</h4>
-                            <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                                <div class="row">
+                                    <div class="col s12 center">
+                                        <h3><i class="mdi-content-send brown-text"></i></h3>
+                                        <h4>Contact Us</h4>
+                                        <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                                    </div>
+                                </div>
+            
+                            </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-            <div class="parallax-container valign-wrapper">
-                <div class="section no-pad-bot">
-                    <div class="container">
-                        <div class="row center">
-                            <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="parallax">
-                    <img src="image/background3.jpg" alt="Unsplasheground img 3"/>
-                    <h:graphicImage name="background3.jpg" library="image" />
-                </div>
-            </div>-->
+            
+            
+                        <div class="parallax-container valign-wrapper">
+                            <div class="section no-pad-bot">
+                                <div class="container">
+                                    <div class="row center">
+                                        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="parallax">
+                                <img src="image/background3.jpg" alt="Unsplasheground img 3"/>
+                                <h:graphicImage name="background3.jpg" library="image" />
+                            </div>
+                        </div>-->
 
             <footer class="page-footer teal">
                 <div class="container">
@@ -122,6 +122,12 @@
             $(document).ready(function () {
                 $('select').formSelect();
                 $(".dropdown-trigger").dropdown();
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('select');
+                var instances = M.FormSelect.init(elems, options);
             });
         </script>
     </body>
