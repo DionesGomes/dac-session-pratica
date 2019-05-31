@@ -23,21 +23,28 @@
                 </style>-->
     </h:head>
     <body>
-        <nav class="light-blue darken-4" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo">LojaDAC</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Produtos</a></li>
-                    <li><a href="#">Cliente</a></li>
-                </ul>
 
-                <ul id="nav-mobile" class="sidenav">
-                    <li><a href="#">Cliente</a></li>
-                    <li><a href="#">Produtos</a></li>
-                </ul>
-                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
+    <!-- Dropdown Structure -->
+    <ul id="produtos" class="dropdown-content">
+        <li><a href="Produto/list.xhtml">Lista e Busca</a></li>
+        <li><a href="Produto/edit.xhtml">Cadastro</a></li>
+    </ul>
+    <ul id="clientes" class="dropdown-content">
+        <li><a href="cliente/list.xhtml">Lista e Busca</a></li>
+        <li><a href="cliente/edit.xhtml">Cadastro</a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Loja DAC</a>
+            <ul class="right hide-on-med-and-down">
+
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" href="#!" data-target="produtos">Produtos<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="clientes">Clientes<i class="material-icons right">arrow_drop_down</i></a></li>
+
+            </ul>
+        </div>
+    </nav>
 
         <div id="index-banner" class="parallax-container">
             <div class="section no-pad-bot">
@@ -66,7 +73,6 @@
         </div>
 
         <ui:insert name="resto">
-
 
             
 <!--            <div class="container">
@@ -136,6 +142,7 @@
         <script>
             $(document).ready(function () {
                 $('select').formSelect();
+                $(".dropdown-trigger").dropdown();
             });
         </script>
     </body>
