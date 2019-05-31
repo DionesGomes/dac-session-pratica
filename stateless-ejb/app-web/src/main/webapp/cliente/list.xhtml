@@ -16,10 +16,10 @@
                     <h:form>
                         <h:messages layout="table" class="red-text"></h:messages>
                         <div class="input-field">
-                            <h:inputText value="" required="true" />
+                            <h:inputText value="cpf" required="true" />
                         </div>
 
-                        <h:commandButton value="Buscar" action="#"
+                        <h:commandButton value="Buscar" action="#{controladorDeClientes.buscarCpf(cpf)}"
                                          class="btn waves-effect waves-teal right" />
 
                     </h:form>
@@ -44,7 +44,7 @@
                         <div class="col l3"></div>
                     </div>
                 </li>
-                <ui:repeat var="cliente" value="">
+                <ui:repeat var="cliente" value="#{controladorDeClientes.todosOsClientes}">
                     <li class="collection-item">
                         <div class="row">
                             <div class="col l3">
@@ -57,10 +57,10 @@
                                 <h:outputText value=""></h:outputText>
                             </div>
                             <div class="col l3">
-                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#{controladorDeClientes.remover()}"/>
+                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#{controladorDeClientes.remover(cliente)}"/>
                             </div>
                             <div class="col l3">
-                                <h:commandButton class="btn waves-effect waves-teal" value="editar" action="#"/>
+                                <h:commandButton class="btn waves-effect waves-teal" value="editar" action="#{controladorDeClientes.atualizar(cliente)}"/>
                             </div>
                         </div>
                     </li>
