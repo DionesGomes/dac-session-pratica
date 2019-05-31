@@ -16,11 +16,11 @@
 
                         <h:messages layout="table" class="red-text"></h:messages>
                         <div class="input-field">
-                            <h:inputText value="" required="true" />
+                            <h:inputText value="#{controladorDeProdutos.descricaoProduto}" required="true" />
                         </div>
 
 
-                        <h:commandButton value="Buscar" action="#{controladorDeProdutos.produtosBuscados}"
+                        <h:commandButton value="Buscar" action="list"
                                          class="btn waves-effect waves-teal right" />
                         
                         <br></br>
