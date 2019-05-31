@@ -2,8 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+>       
 
     <ui:composition template="../template.xhtml">
         <ui:define name="centro">
@@ -26,48 +27,49 @@
 
                 </h:selectOneMenu>  
 
-                <ul class="collection with-header">
+               
+            </h:form>
+            <ul class="collection with-header">
+                <li class="collection-item">
+                    <div class="row">
+                       
+                        <div class="col l3">
+                            <b>Descrição</b>
+                        </div>
+                        <div class="col l3">
+                            <b>Valor</b>
+                        </div>
+                        <div class="col l3">
+                            <b> Quantidade </b>
+                        </div>
+                        <div class="col l3">
+                            <b> Remover </b>
+                        </div>
+                    </div>
+                </li>
+                <ui:repeat var="banda" value="">
                     <li class="collection-item">
                         <div class="row">
+                            
                             <div class="col l3">
-                                <b>ID </b>
-                            </div>
-                            <div class="col l3">
-                                <b>Descricao</b>
+                                <h:outputText value=""></h:outputText>
                             </div>
                             <div class="col l3">
-                                <b>Valor</b>
+                                <h:outputText value=""></h:outputText>
                             </div>
-                             <div class="col l3">
-                                <b>Quantidade</b>
+                            <div class="col l3">
+                                 <h:outputText value=""></h:outputText>
                             </div>
-                            <div class="col">
-                                <b> Remover </b>
+                            <div class="col l3">
+                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
                             </div>
-
                         </div>
                     </li>
-                    <ui:repeat var="banda" value="">
-                        <li class="collection-item">
-                            <div class="row">
-                                <div class="col l4">
-                                    <h:outputText value=""></h:outputText>
-                                </div>
-                                <div class="col l3">
-                                    <h:outputText value=""></h:outputText>
-                                </div>
-                                <div class="col l3">
-                                    <h:outputText value=""></h:outputText>
-                                </div>
-                                <div class="col">
-                                    <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
-                                </div>
-                            </div>
-                        </li>
-                    </ui:repeat>
-                </ul>
-            </h:form>
+                </ui:repeat>
+            </ul>
+            
         </ui:define>
     </ui:composition>
+      
 </html>
 

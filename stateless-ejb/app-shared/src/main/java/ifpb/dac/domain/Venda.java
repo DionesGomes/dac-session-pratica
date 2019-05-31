@@ -19,6 +19,13 @@ public class Venda implements Serializable{
         this.produtos = new ArrayList<>();
     }
 
+    public Venda(int id, int idcliente, double total){
+        this.id = id;
+        this.idcliente = idcliente;
+        this.total = total;
+        this.produtos = new ArrayList<>();
+    }
+
     public Venda(int idcliente, List<Produto> produtos, double total) {
         this.idcliente = idcliente;
         this.produtos = produtos;
