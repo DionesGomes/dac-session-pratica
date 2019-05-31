@@ -112,4 +112,22 @@ public class ClientesEmJDBC implements ClienteInterface{
         return new Cliente(id,cpf,nome);
     }
 
+    @Override
+    public void atualizar(Cliente cliente) {
+        
+         try {         
+                String query = "UPDATE cliente SET nome = ?, cpf = ? "
+                                + "WHERE id = ? ";
+					
+            PreparedStatement stm = connection.prepareStatement(query);
+            stm.setString(1,cliente.getNome());
+            stm.setString(2, cliente.getCpf());
+            stm.setInt(3, cliente.getId());
+            ResultSet rs = stm.executeQuery();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
+        }
+    }
+
 }
