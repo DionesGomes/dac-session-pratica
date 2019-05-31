@@ -12,6 +12,9 @@ public class Principal extends javax.swing.JFrame {
     public static void main(String args[]) {
        
         String recursocliente = "java:global/stateless-ejb-core/ClientesEmJDBC!ifpb.dac.domain.ClienteInterface";
+        String recursoproduto = "java:global/sessionbeans-ejb-core/ProdutosEmJDBC!ifpb.dac.domain.ProdutoInterface";
+        String recursovenda = "java:global/sessionbeans-ejb-core/VendaEmJDBC!ifpb.dac.domain.VendaInterface";
+        String recursocarrinho = "java:global/sessionbeans-ejb-core/CarrinhoDeCompras!ifpb.dac.domain.Carrinho";
         
         Scanner ler = new Scanner(System.in);
         
@@ -19,8 +22,8 @@ public class Principal extends javax.swing.JFrame {
         
         while(menu == true){
             
-            System.out.println("Para ir para as opções de cliente digite 1: \n" + 
-                                "Para ir para as opções de venda digite 2: \n"
+            System.out.println("Para ir para as opções de cliente digite "+ Opcoes.CLIENTES.getId() +": \n" + 
+                                "Para ir para as opções de venda digite "+ Opcoes.PRODUTOS.getId() +": \n"
                                 +"Para sair digite " + Opcoes.SAIR.getId() + ":");
             
             Opcoes quant = Opcoes.fromId(ler.nextInt());
@@ -30,8 +33,8 @@ public class Principal extends javax.swing.JFrame {
                     boolean menuc = true;
                     while(menuc == true){
                         ler.nextLine();
-                        System.out.println("Para cadastrar os clientes digite 1: \n" + 
-                                            "Para listar e buscar os clientes digite 2: \n"
+                        System.out.println("Para cadastrar os clientes digite "+ Opcoes.CADCLIENTES.getId() +" : \n" + 
+                                            "Para listar e buscar os clientes digite "+ Opcoes.LISTBUSCCLIETES.getId() +": \n"
                                             + "Para sair digite " + Opcoes.SAIR.getId() + ":");
                         Opcoes quantc = Opcoes.fromId(ler.nextInt());
                         switch(quantc){
@@ -43,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
                                 boolean menuclb = true;
                                 while(menuclb == true){
                                     ler.nextLine();
-                                    System.out.println("Para buscar um cliente digite 1: \n" + 
+                                    System.out.println("Para buscar um cliente digite "+ Opcoes.BUSCARCLIENTE.getId() +": \n" + 
                                             "Para listar os clientes digite 2: \n" +
                                             "Para sair digite " + Opcoes.SAIR.getId() + ":");
                                     Opcoes quantclb = Opcoes.fromId(ler.nextInt());
@@ -91,9 +94,8 @@ public class Principal extends javax.swing.JFrame {
         List<Cliente> clientes = clientedao.todosOsClientes();
         
         for(Cliente cliente : clientes){
-            System.out.println("Nome: " + cliente.getNome());
-            System.out.println("CPF: " + cliente.getCpf());
-            System.out.println(" --- ");
+            System.out.println(String.format("%20s \t| %20s \t|", "Nome", "CPF"));
+            System.out.println(String.format("%20s \t| %20s \t|", cliente.getNome(), cliente.getCpf()));
         }
     }
     
@@ -160,12 +162,12 @@ public class Principal extends javax.swing.JFrame {
 enum Opcoes{
     CLIENTES(1),
     PRODUTOS(2),
-    CADCLIENTES(10),
-    LISTBUSCCLIETES(20),
-    BUSCARCLIENTE(11),
-    LISTARCLIENTE(22),
-    EDITARCLIENTE(111),
-    EXCLUIRCLIENTE(222),
+    CADCLIENTES(3),
+    LISTBUSCCLIETES(4),
+    BUSCARCLIENTE(5),
+    LISTARCLIENTE(6),
+    EDITARCLIENTE(7),
+    EXCLUIRCLIENTE(8),
     SAIR(0);
     
     private int id;
