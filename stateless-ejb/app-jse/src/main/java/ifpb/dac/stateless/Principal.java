@@ -1,11 +1,10 @@
 package ifpb.dac.stateless;
 
 
+import ifpb.dac.domain.Cliente;
+import ifpb.dac.locator.ServiceLocator;
 import javax.swing.JOptionPane;
-/**
- *
- * @author Ricardo Job
- */
+
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -67,7 +66,10 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nome = "java:global/stateless-ejb-core/CalculadoraImpl";
+        
+        String nome = "java:global/sessionbeans-ejb-core/ClientesEmJDBC";
+        
+        Cliente cliente = new ServiceLocator().lookup(nome, Cliente.class);
         
         
         
