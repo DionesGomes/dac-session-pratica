@@ -11,7 +11,7 @@ public class Principal extends javax.swing.JFrame {
 
     public static void main(String args[]) {
        
-        String recursocliente = "java:global/sessionbeans-ejb-core/ClientesEmJDBC";
+        String recursocliente = "java:global/stateless-ejb-core/ClientesEmJDBC!ifpb.dac.domain.ClienteInterface";
         
         Scanner ler = new Scanner(System.in);
         
@@ -160,12 +160,12 @@ public class Principal extends javax.swing.JFrame {
 enum Opcoes{
     CLIENTES(1),
     PRODUTOS(2),
-    CADCLIENTES(1),
-    LISTBUSCCLIETES(2),
-    BUSCARCLIENTE(1),
-    LISTARCLIENTE(2),
-    EDITARCLIENTE(1),
-    EXCLUIRCLIENTE(2),
+    CADCLIENTES(10),
+    LISTBUSCCLIETES(20),
+    BUSCARCLIENTE(11),
+    LISTARCLIENTE(22),
+    EDITARCLIENTE(111),
+    EXCLUIRCLIENTE(222),
     SAIR(0);
     
     private int id;
