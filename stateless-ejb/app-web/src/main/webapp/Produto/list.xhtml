@@ -16,7 +16,7 @@
                     <h:form>
                         <h:messages layout="table" class="red-text"></h:messages>
                         <div class="input-field">
-                            <h:inputText value="" required="true" />
+                            <h:inputText value="#{controladorDeProdutos.produto.descricao}" required="true" />
                         </div>
 
                         <h:commandButton value="Buscar" action="#"
@@ -44,20 +44,20 @@
                         <div class="col"></div>
                     </div>
                 </li>
-                <ui:repeat var="banda" value="">
+                <ui:repeat var="produto" value="#{controladorDeProdutos.produtosBuscados}">
                     <li class="collection-item">
                         <div class="row">
                             <div class="col l4">
-                                <h:outputText value=""></h:outputText>
+                                <h:outputText value="#{produto.codigo}"></h:outputText>
                             </div>
                             <div class="col l3">
-                                <h:outputText value=""></h:outputText>
+                                <h:outputText value="#{produto.descricao}"></h:outputText>
                             </div>
                             <div class="col l3">
-                                <h:outputText value=""></h:outputText>
+                                <h:outputText value="#{produto.valor}"></h:outputText>
                             </div>
                             <div class="col">
-                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
+                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#{controladorDeProdutos.remover(produto)}"/>
                             </div>
                             <div class="col">
                                 <h:commandButton class="btn waves-effect waves-teal" value="editar" action="#"/>

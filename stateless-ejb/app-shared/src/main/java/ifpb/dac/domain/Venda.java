@@ -8,7 +8,7 @@ public class Venda implements Serializable{
 
     private int id;
     private int idcliente;
-    private List<Produto> produtos;
+    private List<Item> itens;
     private double total;
     
     public Venda(){
@@ -16,19 +16,19 @@ public class Venda implements Serializable{
 
     public Venda(int idcliente) {
         this.idcliente = idcliente;
-        this.produtos = new ArrayList<>();
+        this.itens = new ArrayList<>();
     }
 
     public Venda(int id, int idcliente, double total){
         this.id = id;
         this.idcliente = idcliente;
         this.total = total;
-        this.produtos = new ArrayList<>();
+        this.itens = new ArrayList<>();
     }
 
-    public Venda(int idcliente, List<Produto> produtos, double total) {
+    public Venda(int idcliente, List<Item> itens, double total) {
         this.idcliente = idcliente;
-        this.produtos = produtos;
+        this.itens = itens;
         this.total = total;
     }
 
@@ -56,12 +56,12 @@ public class Venda implements Serializable{
         this.idcliente = idcliente;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<Item> getItens() {
+        return itens;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
     }
     
     
