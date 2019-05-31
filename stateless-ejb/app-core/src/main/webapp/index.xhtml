@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </h:head>
+    <body>
+        <h1>Hello World!</h1>
+        
+         <h:form>
+        	<h:commandButton 
+        		class="btn"
+        		value="nova"
+        		action="#{controladorDeBandas.novo}"/>
+        
+            <h:dataTable var="cliente" value="#{controleDeClientes.todosOsClientes}"
+                         class="striped highlight">
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputLabel                     	
+                    	value="#{client.nome}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </body>
+</html>
