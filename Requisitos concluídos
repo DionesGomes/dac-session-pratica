@@ -1,0 +1,15 @@
+Requisitos Funcionais
+RF01 - Implementar a classe Venda; (FEITO - FUNCIONANDO)
+RF02 - Implementar o acesso aos dados com 'DataSource'; (FEITO - FUNCIONANDO)
+RF03 - Na pasta cliente, criar as páginas edit.xhtml e list.xhtml para o arquivo de template template.xhtml; 
+(FEITO - FUNCIONANDO)
+RF04 - Implementar um carrinho de Compras fazendo uso de um componente Stateful. (FEITO - FALTA TESTAR)
+RF05 - Adicionar um selectOneMenu na página edit.xhtml da pasta venda. Deve ser possível selecionar um Produto e associar sua instância ao atributo produtos da classe Venda. (FAZENDO)
+RF06 - Criar as páginas para edição e listagem da entidade Produto; (FEITO - FUNCIONANDO)
+RF07 - Criar uma página que permita realizar uma busca por CPF; (FEITO - FALTA TESTAR)
+RF08 - Criar uma página que permita realizar uma busca por descricao; (FEITO - FUNCIONANDO)
+RF09 - Criar uma página que permita realizar uma nova Venda; (NÃO FEITO)
+Requisitos Não Funcionais
+RN01 - A aplicação será desenvolvida em módulos. Deve ser possível acessá-la em ambiente web e standalone. (FEITO)
+RN02 - Não é preciso fazer uso de interface gráfica no módulo standalone (FEITO)
+RN03 - Realizar o deploy da aplicação usando o Docker Compose.
