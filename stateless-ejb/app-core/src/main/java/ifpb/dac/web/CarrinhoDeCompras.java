@@ -38,6 +38,8 @@ public class CarrinhoDeCompras implements Carrinho{
     @Override
     @Remove
     public void finalizar() {
-
+        System.out.printf("----Carrinho------");
+        this.produtos.forEach(System.out::println);
+        this.produtos.clear();
     }
 }
