@@ -5,18 +5,16 @@ import java.io.Serializable;
 public class Item implements Serializable {
 
     private int id;
-    private int idVenda;
-    private int idProduto;
+    private Produto produto;
     private int quantidade;
     private double subtotal;
 
     public Item() {
     }
 
-    public Item(int id, int idVenda, int idProduto, int quantidade, double subtotal) {
+    public Item(int id, Produto produto, int quantidade, double subtotal) {
         this.id = id;
-        this.idVenda = idVenda;
-        this.idProduto = idProduto;
+        this.produto = produto;
         this.quantidade = quantidade;
         this.subtotal = subtotal;
     }
@@ -29,20 +27,12 @@ public class Item implements Serializable {
         this.id = id;
     }
 
-    public int getIdVenda() {
-        return idVenda;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setIdVenda(int idVenda) {
-        this.idVenda = idVenda;
-    }
-
-    public int getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(int idProduto) {
-        this.idProduto = idProduto;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
     public int getQuantidade() {

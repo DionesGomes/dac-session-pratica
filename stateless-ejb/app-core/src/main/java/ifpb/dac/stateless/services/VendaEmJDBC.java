@@ -1,5 +1,6 @@
 package ifpb.dac.stateless.services;
 
+import ifpb.dac.domain.Item;
 import ifpb.dac.domain.Venda;
 import ifpb.dac.domain.VendaInterface;
 
@@ -49,6 +50,7 @@ public class VendaEmJDBC implements VendaInterface {
             if (rs.next())
                 venda.setId(rs.getInt("id"));
             // Manipular a tabela itemVenda
+
         } catch (SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
         }
