@@ -17,16 +17,16 @@
                         <div class="input-field">
                             <h:outputLabel for="descricao">Descrição:</h:outputLabel>
                             <h:inputText id="descricao"
-                                         value="" />
+                                         value="#{controladorDeProdutos.produto.descricao}" />
                         </div>
                         <div class="input-field">
                             <h:outputLabel for="valor">Valor:</h:outputLabel>
                             <h:inputText id="valor"
-                                         value="" />
+                                         value="#{controladorDeProdutos.produto.valor}" />
                         </div>
 
 
-                        <h:commandButton value="Cadastrar" action="#"
+                        <h:commandButton value="Cadastrar" action="#{controladorDeProdutos.adicionar}"
                                          class="btn waves-effect waves-teal right" />
                         <h:commandButton value="Atualizar" action="#"
                                          class="btn waves-effect waves-teal right" />

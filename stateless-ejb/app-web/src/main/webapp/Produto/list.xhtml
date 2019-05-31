@@ -13,72 +13,72 @@
             <h:form>
                 <div class="row">
                     <div class="col l12">
-                        <h:form>
-                            <h:messages layout="table" class="red-text"></h:messages>
-                            <div class="input-field">
-                                <h:inputText value="" required="true" />
-                            </div>
 
-                            <h:commandButton value="Buscar" action="#"
-                                             class="btn waves-effect waves-teal right" />
+                        <h:messages layout="table" class="red-text"></h:messages>
+                        <div class="input-field">
+                            <h:inputText value="" required="true" />
+                        </div>
 
 
+                        <h:commandButton value="Buscar" action="#"
+                                         class="btn waves-effect waves-teal right" />
+                        
+                        <br></br>
+                        <br></br>
+                        
+                        <a href="edit.xhtml">Adicionar/Editar</a>
 
-                            <br></br>
-                             <br></br>
-
-
-                            <a href="edit.xhtml">Adicionar/Editar</a>
-
-
-                            <ul class="collection with-header">
+                        <ul class="collection with-header">
+                            <li class="collection-item">
+                                <div class="row">
+                                    <div class="col l2">
+                                        <b>ID</b>
+                                    </div>
+                                    <div class="col l3">
+                                        <b>Descricao</b>
+                                    </div>
+                                    <div class="col l3">
+                                        <b>Valor</b>
+                                    </div>
+                                    <div class="col l2">
+                                        <b> Editar </b>
+                                    </div>
+                                    <div class="col l2">
+                                        <b> Remover </b>
+                                    </div>
+                                </div>
+                            </li>
+                            <ui:repeat var="banda" value="">
                                 <li class="collection-item">
                                     <div class="row">
                                         <div class="col l2">
-                                            <b>ID</b>
+                                            <h:outputText value=""></h:outputText>
                                         </div>
                                         <div class="col l3">
-                                            <b>Descricao</b>
+                                            <h:outputText value=""></h:outputText>
                                         </div>
                                         <div class="col l3">
-                                            <b>Valor</b>
+                                            <h:outputText value=""></h:outputText>
                                         </div>
                                         <div class="col l2">
-                                            <b> Editar </b>
+                                            <h:commandButton class="btn waves-effect waves-teal" value="e" action="#"/>
                                         </div>
                                         <div class="col l2">
-                                            <b> Remover </b>
+                                            <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
                                         </div>
                                     </div>
                                 </li>
-                                <ui:repeat var="banda" value="">
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col l2">
-                                                <h:outputText value=""></h:outputText>
-                                            </div>
-                                            <div class="col l3">
-                                                <h:outputText value=""></h:outputText>
-                                            </div>
-                                            <div class="col l3">
-                                                <h:outputText value=""></h:outputText>
-                                            </div>
-                                            <div class="col l2">
-                                                <h:commandButton class="btn waves-effect waves-teal" value="e" action="#"/>
-                                            </div>
-                                            <div class="col l2">
-                                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ui:repeat>
-                            </ul>
+                            </ui:repeat>
+                        </ul>
 
-                        </h:form>
                     </div>
                 </div>
+
             </h:form>
-           
+
+
         </ui:define>
     </ui:composition>
+
+
 </html>
