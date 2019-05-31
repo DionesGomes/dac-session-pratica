@@ -79,29 +79,10 @@ public class ProdutosEmJDBC implements ProdutoInterface{
 		}		
     }
 
-    @Override
-    public List<Produto> todososclientes() {
-        
-         try {
-	            List<Produto> lista = new ArrayList<>();
-	            String query = " SELECT * "
-	            		+ " FROM produto "
-	            		+ " ORDER BY nome ";
-	            PreparedStatement stm = connection.prepareStatement(query); 
-	            ResultSet rs = stm.executeQuery();
-	            while (rs.next()) {
-	                lista.add(
-	                    criarProduto(rs)
-	                );
-	            }
-	            return lista;
-	        } catch (SQLException ex) {
-	            return Collections.EMPTY_LIST;
-	        }
-    }
+   
 
     @Override
-    public Produto buscardescricao(String descricao) {
+    public Produto buscarDescricao(String descricao) {
         
         try {
 			String query = "SELECT * "
@@ -116,8 +97,7 @@ public class ProdutosEmJDBC implements ProdutoInterface{
 			ex.printStackTrace();
 		}
 		return null;
-        }
-    
+        }   
     
     private Produto criarProduto(ResultSet result) throws SQLException {
         Integer codigo = result.getInt("codigo");
@@ -143,5 +123,25 @@ public class ProdutosEmJDBC implements ProdutoInterface{
         } catch (SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
         }
+    }
+
+    @Override
+    public List<Produto> todosOsProduto() {        
+        try {
+	        List<Produto> lista = new ArrayList<>();
+	        String query = " SELECT * "
+	            		+ " FROM produto "
+	            		+ " ORDER BY nome ";
+	         PreparedStatement stm = connection.prepareStatement(query); 
+	         ResultSet rs = stm.executeQuery();
+	            while (rs.next()) {
+	                lista.add(
+	                    criarProduto(rs)
+	                );
+	            }
+	            return lista;
+	    } catch (SQLException ex) {
+	      return Collections.EMPTY_LIST;
+         }
     }
 }
