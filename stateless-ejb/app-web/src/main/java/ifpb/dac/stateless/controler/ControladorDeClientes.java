@@ -33,6 +33,11 @@ public class ControladorDeClientes implements Serializable{
 		return null;
 	}
 
+	public String atualizar(Cliente cliente){
+		this.clienteDAO.atualizar(cliente);
+		return null;
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
