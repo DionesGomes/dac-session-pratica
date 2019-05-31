@@ -109,7 +109,7 @@ public class ClientesEmJDBC implements ClienteInterface{
         String nome = result.getString("nome");
         String cpf = result.getString("cpf");
         int id = result.getInt("id");
-        return new Cliente(id,cpf,nome);
+        return new Cliente(id,nome,cpf);
     }
 
     @Override
