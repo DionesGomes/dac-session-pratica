@@ -1,34 +1,36 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="../template.xhtml">
     <ui:define name="centro">
-        <h3 class="blue-text">Edição e cadastro de cliente</h3>
+        <h3 class="blue-text">Edição e cadastro de produtos</h3>
         <h:form>
             <div class="row">
                 <div class="col s12 l4 offset-l4">
                     <h:form>
                         <h:messages layout="table" class="red-text"></h:messages>
                         <div class="input-field">
-                            <h:outputLabel for="cpf">CPF:</h:outputLabel>
-                            <h:inputText id="cpf"
+                            <h:outputLabel for="descricao">Descrição:</h:outputLabel>
+                            <h:inputText id="descricao"
                                          value="" />
                         </div>
                         <div class="input-field">
-                            <h:outputLabel for="nome">Nome:</h:outputLabel>
-                            <h:inputText id="nome"
+                            <h:outputLabel for="valor">Valor:</h:outputLabel>
+                            <h:inputText id="valor"
                                          value="" />
                         </div>
 
 
-                        <h:commandButton value="Cadastrar" action=""
+                        <h:commandButton value="Cadastrar" action="#"
                                          class="btn waves-effect waves-teal right" />
-                        <h:commandButton value="Atualizar" action=""
+                        <h:commandButton value="Atualizar" action="#"
                                          class="btn waves-effect waves-teal right" />
-                        <a href="list.xhtml" class="btn waves-effect waves-teal right">Lista de clientes</a>
+                        <a href="list.xhtml" class="btn waves-effect waves-teal right">Lista de produtos</a>
                     </h:form>
                 </div>
             </div>
@@ -36,4 +38,3 @@
     </ui:define>
 </ui:composition>
 </html>
-
