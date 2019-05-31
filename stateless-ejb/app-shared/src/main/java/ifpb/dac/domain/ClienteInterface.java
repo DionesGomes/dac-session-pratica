@@ -8,6 +8,8 @@ public interface ClienteInterface {
     
     void remover(Cliente cliente);
     
+    void atualizar(Cliente cliente);
+    
     List<Cliente> todososclientes();
     
     Cliente buscarcpf(String cpf);

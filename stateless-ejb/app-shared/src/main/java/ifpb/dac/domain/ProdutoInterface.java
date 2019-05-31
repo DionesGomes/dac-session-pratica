@@ -9,6 +9,8 @@ public interface ProdutoInterface {
     
     void remover(Produto produto);
     
+    void atualizar(Produto produto);
+    
     List<Produto> todososclientes();
     
     Produto buscardescricao(String descricao);
