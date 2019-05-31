@@ -1,30 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:composition template="../template.xhtml">
     <ui:define name="centro">
-        <h3 class="blue-text">Lista de clientes</h3>
-        <a href="edit.xhtml">Adicionar/Editar</a>
+        <h3 class="blue-text">Edição Venda</h3>
+        <hr/>
+        <h5 class="blue-text">Nome do cliente</h5>
+        <h5 class="blue-text">Valor venda: </h5>
+        <h6 class="black-text"> Lista de produtos </h6>
         <h:form prependId="false">
             <ul class="collection with-header">
                 <li class="collection-item">
                     <div class="row">
                         <div class="col l4">
-                            <b>ID</b>
+                            <b>ID </b>
                         </div>
                         <div class="col l3">
-                            <b>CPF</b>
+                            <b>Descricao</b>
                         </div>
                         <div class="col l3">
-                            <b>Nome</b>
+                            <b>Valor</b>
                         </div>
-                        <div class="col"></div>
-                        <div class="col"></div>
+                        <div class="col">
+                            <b> Remover </b>
+                        </div>
+                        
                     </div>
                 </li>
                 <ui:repeat var="banda" value="">
@@ -42,9 +45,6 @@
                             <div class="col">
                                 <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
                             </div>
-                            <div class="col">
-                                <h:commandButton class="btn waves-effect waves-teal" value="editar" action="#"/>
-                            </div>
                         </div>
                     </li>
                 </ui:repeat>
@@ -53,3 +53,4 @@
     </ui:define>
 </ui:composition>
 </html>
+
