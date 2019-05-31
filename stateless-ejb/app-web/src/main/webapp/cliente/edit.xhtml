@@ -27,10 +27,11 @@
 
 
                         <h:commandButton value="Cadastrar" action="#{controladorDeClientes.adicionar}"
-                                         class="btn waves-effect waves-teal left" />
+                                         class="btn waves-effect waves-teal right" />
                         
-                        <h:commandButton value="Atualizar" action="#"
-                                         class="btn waves-effect waves-red right" />
+                        <h:commandButton value="Atualizar" action="#{controladorDeClientes.atualizar(cliente)}"
+                                         class="btn waves-effect waves-teal right" />
+
                         
                     </h:form>
                 </div>

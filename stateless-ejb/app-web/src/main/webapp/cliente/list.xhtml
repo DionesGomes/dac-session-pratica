@@ -7,75 +7,71 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
+
     <ui:composition template="../template.xhtml">
         <ui:define name="centro">
             <h3 class="blue-text">Lista de clientes</h3>
             <h4 class="blue-text">Busca de cliente por CPF</h4>
-            <h:form>    
-                <div class="row">
-                    <div class="col l12">
-                        <h:form>
-                            <h:messages layout="table" class="red-text"></h:messages>
-                            <div class="input-field">
-                                <h:inputText value="" required="true" />
-                            </div>
+            <div class="row">
+                <div class="col l12">
+                    <h:form>
+                        <h:messages layout="table" class="red-text"></h:messages>
+                        <div class="input-field">
+                            <h:inputText value="cpf" required="true" />
+                        </div>
 
-                            <h:commandButton value="Buscar" action="#"
-                                             class="btn waves-effect waves-teal right" />
+                        <h:commandButton value="Buscar" action="#{controladorDeClientes.buscarCpf(cpf)}"
+                                         class="btn waves-effect waves-teal right" />
 
-                            
-                            <br/>
-                            <br/>
-                            
-                            <a href="edit.xhtml">Adicionar/Editar</a>
-                            <ul class="collection with-header">
+                        <br/>
+                        <br/>
+
+                        <a href="edit.xhtml">Adicionar/Editar</a>
+                        <ul class="collection with-header">
+                            <li class="collection-item">
+                                <div class="row">
+                                    <div class="col l2">
+                                        <b>ID</b>
+                                    </div>
+                                    <div class="col l3">    
+                                        <b>CPF</b>
+                                    </div>
+                                    <div class="col l3">
+                                        <b>Nome</b>
+                                    </div>
+                                    <div class="col l2">
+                                        <b> Editar </b>
+                                    </div>
+                                    <div class="col l2">
+                                        <b> Remover </b>
+                                    </div>
+                                </div>
+                            </li>
+                            <ui:repeat var="cliente" value="#{controladorDeClientes.todosOsClientes}">
                                 <li class="collection-item">
                                     <div class="row">
                                         <div class="col l2">
-                                            <b>ID</b>
-                                        </div>
-                                        <div class="col l3">    
-                                            <b>CPF</b>
+                                            <h:outputText value=""></h:outputText>
                                         </div>
                                         <div class="col l3">
-                                            <b>Nome</b>
+                                            <h:outputText value=""></h:outputText>
+                                        </div>
+                                        <div class="col l3">
+                                            <h:outputText value=""></h:outputText>
                                         </div>
                                         <div class="col l2">
-                                            <b> Editar </b>
+                                            <h:commandButton class="btn waves-effect waves-teal" value="x" action="#{controladorDeClientes.remover(cliente)}"/>
                                         </div>
                                         <div class="col l2">
-                                            <b> Remover </b>
+                                            <h:commandButton class="btn waves-effect waves-teal" value="e" action="#{controladorDeClientes.atualizar(cliente)}"/>
                                         </div>
                                     </div>
                                 </li>
-                                <ui:repeat var="cliente" value="">
-                                    <li class="collection-item">
-                                        <div class="row">
-                                            <div class="col l2">
-                                                <h:outputText value=""></h:outputText>
-                                            </div>
-                                            <div class="col l3">
-                                                <h:outputText value=""></h:outputText>
-                                            </div>
-                                            <div class="col l3">
-                                                <h:outputText value=""></h:outputText>
-                                            </div>
-                                            <div class="col l2">
-                                                <h:commandButton class="btn waves-effect waves-teal" value="e" action="#{controladorDeClientes.remover()}"/>
-                                            </div>
-                                            <div class="col l2">
-                                                <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ui:repeat>
-                            </ul>
-
-                        </h:form>
-                    </div>
+                            </ui:repeat>
+                        </ul>
+                    </h:form>
                 </div>
-            </h:form>
-
+            </div>
         </ui:define>
     </ui:composition>
 </html>

@@ -51,9 +51,33 @@ public class VendaEmJDBC implements VendaInterface {
                 venda.setId(rs.getInt("id"));
             // Manipular a tabela itemVenda
 
+            for (Item item : venda.getItens()) {
+                inserirItem(item, venda.getId());
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
         }
+    }
+
+    private void inserirItem(Item item, int idVenda){
+        try {
+            String query = "INSERT INTO"
+                    + "  itemVenda (id_venda, id_produto, quant, subtotal)"
+                    + "  VALUES(?,?,?,?)"
+                    + " RETURNING id; ";
+            PreparedStatement stm = connection.prepareStatement(query);
+            stm.setInt(1,idVenda);
+            stm.setInt(2,item.getProduto().getCodigo());
+            stm.setInt(3, item.getQuantidade());
+            stm.setDouble(4, item.getSubtotal());
+            ResultSet rs = stm.executeQuery();
+            if (rs.next())
+                item.setId(rs.getInt("id"));
+        } catch (SQLException ex){
+            Logger.getLogger(ClientesEmJDBC.class.getName()).log(Level.SEVERE,null,ex);
+        }
+
     }
 
     @Override

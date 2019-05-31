@@ -55,16 +55,16 @@
                                             <h:outputText value="#{produto.codigo}"></h:outputText>
                                         </div>
                                         <div class="col l3">
-                                            <h:outputText value=""></h:outputText>
+                                            <h:outputText value="#{produto.descricao}"></h:outputText>
                                         </div>
                                         <div class="col l3">
-                                            <h:outputText value=""></h:outputText>
+                                            <h:outputText value="#{produto.valor}"></h:outputText>
                                         </div>
                                         <div class="col l2">
-                                            <h:commandButton class="btn waves-effect waves-teal" value="e" action="#"/>
+                                            <h:commandButton class="btn waves-effect waves-teal" value="e" action="#{controladorDeProdutos.editar(produto)}"/>
                                         </div>
                                         <div class="col l2">
-                                            <h:commandButton class="btn waves-effect waves-teal" value="x" action="#"/>
+                                            <h:commandButton class="btn waves-effect waves-teal" value="x" action="#{controladorDeProdutos.remover(produto)}"/>
                                         </div>
                                     </div>
                                 </li>
