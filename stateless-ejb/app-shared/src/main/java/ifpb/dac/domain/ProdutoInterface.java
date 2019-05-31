@@ -11,7 +11,7 @@ public interface ProdutoInterface {
     
     void atualizar(Produto produto);
     
-    List<Produto> todososclientes();
+    List<Produto> todososproduto();
     
     Produto buscardescricao(String descricao);
 }
