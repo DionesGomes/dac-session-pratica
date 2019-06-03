@@ -3,7 +3,10 @@ package ifpb.dac.stateless;
 
 import ifpb.dac.domain.Cliente;
 import ifpb.dac.domain.ClienteInterface;
+import ifpb.dac.domain.Produto;
+import ifpb.dac.domain.ProdutoInterface;
 import ifpb.dac.locator.ServiceLocator;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,9 +20,7 @@ public class Principal extends javax.swing.JFrame {
         String recursocarrinho = "java:global/sessionbeans-ejb-core/CarrinhoDeCompras!ifpb.dac.domain.Carrinho";
         
         Scanner ler = new Scanner(System.in);
-        
-        boolean menu = true;
-        
+        boolean menu = true;       
         while(menu == true){
             
             System.out.println("Para ir para as opções de cliente digite "+ Opcoes.CLIENTES.getId() +": \n" + 
@@ -75,7 +76,8 @@ public class Principal extends javax.swing.JFrame {
                     }
                     break;
                 case PRODUTOS:
-                     break;
+                    produtos(recursoproduto);
+                    break;
                 case SAIR:
                     menu = false;
                     break;
@@ -85,6 +87,54 @@ public class Principal extends javax.swing.JFrame {
         }
         
         ler.close();
+        
+    }
+    
+    public static void produtos(String recurso){
+        
+        Scanner ler = new Scanner(System.in);
+        boolean menu = true;
+        while(menu == true){
+            ler.nextLine();
+            System.out.println("Para cadastrar,remover ou atualizar produto digite "+ Opcoes.CRUDPRODUTO.getId() +" : \n" + 
+                               "Para comprar produtos digite "+ Opcoes.COMPRAPRODUTO.getId() +": \n"
+                             + "Para sair digite " + Opcoes.SAIR.getId() + ":");
+            Opcoes quant = Opcoes.fromId(ler.nextInt());
+            switch(quant){
+                case CRUDPRODUTO:
+                    crudProduto(recurso);
+                    break;
+                case COMPRAPRODUTO:
+                    compraProdutos(recurso);
+                    break;
+                case SAIR:
+                    menu = false;
+                    break;
+                default:
+                    System.out.println("Numero errado!!!");
+            }
+        }
+    }
+    
+    public static void crudProduto(String recurso){
+        
+        Produto produto = new Produto();
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Cadastro: ");
+        System.out.println("Descrição: ");
+        String descricao = ler.nextLine();
+        ler.nextLine();
+        System.out.println("valor: ");
+        BigDecimal valor = ler.nextBigDecimal();
+        ler.nextLine();
+        produto.setDescricao(descricao);
+        produto.setValor(valor);
+        ProdutoInterface produtodao = new ServiceLocator().lookup(recurso, ProdutoInterface.class);
+        produtodao.adicionar(produto);
+    
+    }
+    
+    public static void compraProdutos(String recurso){
         
     }
     
@@ -168,6 +218,8 @@ enum Opcoes{
     LISTARCLIENTE(6),
     EDITARCLIENTE(7),
     EXCLUIRCLIENTE(8),
+    CRUDPRODUTO(9),
+    COMPRAPRODUTO(10),
     SAIR(0);
     
     private int id;
