@@ -118,9 +118,43 @@ public class Principal extends javax.swing.JFrame {
     
     public static void crudProduto(String recurso){
         
+        Scanner ler = new Scanner(System.in);
+        boolean menu = true;
+        while(menu == true){
+            ler.nextLine();
+            System.out.println("Para cadastrar um produto digite "+ Opcoes.CADASTROPRODUTO.getId() +" : \n" + 
+                               "Para listar os produtos digite "+ Opcoes.LISTPRODUTO.getId() +": \n" +
+                               "Para remover um produto digite "+ Opcoes.REMOVEPRODUTO.getId() +": \n" +
+                               "Para atualizar um produto digite "+ Opcoes.ATUALIZARPRODUTO.getId() +": \n" +
+                               "Para sair digite " + Opcoes.SAIR.getId() + ":");
+            Opcoes quant = Opcoes.fromId(ler.nextInt());
+            switch(quant){
+                case CADASTROPRODUTO:
+                    cadastroProduto(recurso);
+                    break;
+                case LISTPRODUTO:
+                    listProduto(recurso);
+                    break;
+                case REMOVEPRODUTO:
+                    removeProduto(recurso);
+                    break;
+                case ATUALIZARPRODUTO:
+                    atualizarProduto(recurso);
+                    break;
+                case SAIR:
+                    menu = false;
+                    break;
+                default:
+                    System.out.println("Numero errado!!!");
+            }
+        }
+    
+    }
+    
+    public static void cadastroProduto(String recurso){
+        
         Produto produto = new Produto();
         Scanner ler = new Scanner(System.in);
-        System.out.println("Cadastro: ");
         System.out.println("Descrição: ");
         String descricao = ler.nextLine();
         ler.nextLine();
@@ -131,7 +165,60 @@ public class Principal extends javax.swing.JFrame {
         produto.setValor(valor);
         ProdutoInterface produtodao = new ServiceLocator().lookup(recurso, ProdutoInterface.class);
         produtodao.adicionar(produto);
+        
+    }
     
+    public static void listProduto(String recurso){
+        
+        ProdutoInterface produtodao = new ServiceLocator().lookup(recurso, ProdutoInterface.class);
+        List<Produto> produtos = produtodao.todosOsProduto();
+        
+        for(Produto produto : produtos){
+            System.out.println(String.format("%20s \t| %20s \t| %20s \t|", "Codigo", "Nome", "CPF"));
+            System.out.println(String.format("%20s \t| %20s \t| %20s \t|", produto.getCodigo(), produto.getDescricao(), produto.getValor()));
+        }
+    
+    }
+    
+    public static void removeProduto(String recurso){
+        
+        Produto produto = new Produto();
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Codigo: ");
+        int codigo = ler.nextInt();
+        ler.nextLine();
+        System.out.println("Descrição: ");
+        String descricao = ler.nextLine();
+        ler.nextLine();
+        System.out.println("valor: ");
+        BigDecimal valor = ler.nextBigDecimal();
+        ler.nextLine();
+        produto.setCodigo(codigo);
+        produto.setDescricao(descricao);
+        produto.setValor(valor);
+        ProdutoInterface produtodao = new ServiceLocator().lookup(recurso, ProdutoInterface.class);
+        produtodao.remover(produto);
+    
+    }
+    
+    public static void atualizarProduto(String recurso){
+        
+        Produto produto = new Produto();
+        Scanner ler = new Scanner(System.in);
+        System.out.println("Codigo do produto que vai ser atualizado: ");
+        int codigo = ler.nextInt();
+        ler.nextLine();
+        System.out.println("Descrição: ");
+        String descricao = ler.nextLine();
+        ler.nextLine();
+        System.out.println("valor: ");
+        BigDecimal valor = ler.nextBigDecimal();
+        ler.nextLine();
+        produto.setCodigo(codigo);
+        produto.setDescricao(descricao);
+        produto.setValor(valor);
+        ProdutoInterface produtodao = new ServiceLocator().lookup(recurso, ProdutoInterface.class);
+        produtodao.atualizar(produto);
     }
     
     public static void compraProdutos(String recurso){
@@ -220,6 +307,10 @@ enum Opcoes{
     EXCLUIRCLIENTE(8),
     CRUDPRODUTO(9),
     COMPRAPRODUTO(10),
+    CADASTROPRODUTO(11),
+    LISTPRODUTO(12),
+    REMOVEPRODUTO(13),
+    ATUALIZARPRODUTO(14),
     SAIR(0);
     
     private int id;
