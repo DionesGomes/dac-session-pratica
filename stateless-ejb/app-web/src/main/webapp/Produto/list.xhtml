@@ -34,10 +34,10 @@
                                     <div class="col l2">
                                         <b>ID</b>
                                     </div>
-                                    <div class="col l3">
+                                    <div class="col l2">
                                         <b>Descricao</b>
                                     </div>
-                                    <div class="col l3">
+                                    <div class="col l2">
                                         <b>Valor</b>
                                     </div>
                                     <div class="col l2">
@@ -45,6 +45,9 @@
                                     </div>
                                     <div class="col l2">
                                         <b> Remover </b>
+                                    </div>
+                                    <div class="col l2">
+                                        <b> Add Carrinho </b>
                                     </div>
                                 </div>
                             </li>
@@ -54,10 +57,10 @@
                                         <div class="col l2">
                                             <h:outputText value="#{produto.codigo}"></h:outputText>
                                         </div>
-                                        <div class="col l3">
+                                        <div class="col l2">
                                             <h:outputText value="#{produto.descricao}"></h:outputText>
                                         </div>
-                                        <div class="col l3">
+                                        <div class="col l2">
                                             <h:outputText value="#{produto.valor}"></h:outputText>
                                         </div>
                                         <div class="col l2">
@@ -65,6 +68,9 @@
                                         </div>
                                         <div class="col l2">
                                             <h:commandButton class="btn waves-effect waves-teal" value="x" action="#{controladorDeProdutos.remover(produto)}"/>
+                                        </div>
+                                        <div class="col l2">
+                                            <h:commandButton class="btn waves-effect waves-teal" value="A" action="#{controladorDeCarrinho.adicionar(produto)}"/>
                                         </div>
                                     </div>
                                 </li>

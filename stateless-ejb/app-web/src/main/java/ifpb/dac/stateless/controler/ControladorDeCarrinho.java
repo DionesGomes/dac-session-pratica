@@ -21,12 +21,12 @@ public class ControladorDeCarrinho implements Serializable {
     @EJB
     private Carrinho carrinho;
 
-    public String adicionar(){
-        this.carrinho.adicionar(produto);
+    public String adicionar(Produto p){
+        this.carrinho.adicionar(p);
         return null;
     }
 
-    public List<Produto> todos(){
+    public List<Produto> getTodos(){
         return this.carrinho.produtos();
     }
 
